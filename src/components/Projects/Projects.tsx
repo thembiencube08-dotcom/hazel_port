@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import {  useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
 import { GitBranch, ExternalLink } from 'lucide-react';
