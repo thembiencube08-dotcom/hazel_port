@@ -1,0 +1,9 @@
+/* Global base reset — all styling handled by Styled Components */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
