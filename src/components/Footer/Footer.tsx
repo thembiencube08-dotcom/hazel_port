@@ -176,7 +176,7 @@ export default function Footer() {
             </Tagline>
             <EmailLink href="mailto:thembiencube08@email.com">
               <Mail size={14} />
-              thembiencube08@email.com
+              thembiencube08@gmail.com
             </EmailLink>
             <SocialRow>
               <SocialLink href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

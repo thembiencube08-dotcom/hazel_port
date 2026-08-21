@@ -202,8 +202,8 @@ const experiences = [
     role: 'Certifications',
     org: 'FreeCodeCamp / Coursera',
     period: '2026',
-    desc: 'Completed certifications in FreeCodeCamp and a Python crash course.',
-    chips: ['Python', 'HTML', 'CSS'],
+    desc: 'Completed certifications in FreeCodeCamp(Responsive Web Design) Cousera (Python crash course) Uxcel (UI/UX Foundations, Design Thinking).',
+    chips: ['Python', 'HTML', 'CSS', 'Figma'],
   },
   {
     icon: Users,

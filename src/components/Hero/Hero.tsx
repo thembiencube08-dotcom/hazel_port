@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, ArrowUpRight, X } from 'lucide-react';
 import { containerVariants, itemVariants } from '../../utils/motion';
-import profileImg from '../../assets/kpp.png';
+import profileImg from '../../assets/kpp_optimized.png';
 
 /* ─── Outer shell ─── */
 const Section = styled.section`
@@ -111,7 +112,7 @@ const BtnRow = styled.div`
   flex-wrap: wrap;
 `;
 
-const PrimaryBtn = styled.a`
+const PrimaryBtn = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -120,6 +121,8 @@ const PrimaryBtn = styled.a`
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: all 0.22s ease;
 
@@ -129,7 +132,7 @@ const PrimaryBtn = styled.a`
     box-shadow: ${({ theme }) => theme.shadows.accent};
   }
   svg { transition: transform 0.18s ease; }
-  &:hover svg { transform: translateX(3px); }
+  &:hover svg { transform: translateY(-2px); }
 `;
 
 const GhostBtn = styled.a`
@@ -147,6 +150,99 @@ const GhostBtn = styled.a`
   &:hover {
     border-color: ${({ theme }) => theme.colors.accent};
     color: ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+/* ─── CV Modal ─── */
+const Backdrop = styled(motion.div)`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+`;
+
+const ModalBox = styled(motion.div)`
+  background: ${({ theme }) => theme.colors.surface};
+  border-radius: ${({ theme }) => theme.borderRadius['3xl']};
+  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+`;
+
+const ModalTitle = styled.h3`
+  font-size: 1rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const CloseBtn = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.textMuted};
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: color 0.18s ease, background 0.18s ease;
+  &:hover { color: ${({ theme }) => theme.colors.text}; background: ${({ theme }) => theme.colors.border}; }
+`;
+
+const ModalBody = styled.div`
+  overflow-y: auto;
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const CVImage = styled.img`
+  width: 100%;
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  object-fit: contain;
+`;
+
+const ModalFooter = styled.div`
+  padding: 1rem 1.5rem;
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const DownloadBtn = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: ${({ theme }) => theme.colors.accent};
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  transition: all 0.22s ease;
+  text-decoration: none;
+  &:hover {
+    background: ${({ theme }) => theme.colors.accentDark};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.accent};
   }
 `;
 
@@ -203,49 +299,90 @@ const go = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
   document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
 };
 
+const CV_IMAGE = '/images/Thembelihle_Ncube-CV.png';
+
 export default function Hero() {
+  const [cvOpen, setCvOpen] = useState(false);
+
   return (
-    <Section id="home">
-      <SideLabel>Coding Tomorrow. Today.</SideLabel>
+    <>
+      <Section id="home">
+        <SideLabel>Coding Tomorrow. Today.</SideLabel>
 
-      <Grid>
-        <Left variants={containerVariants} initial="hidden" animate="visible">
-          <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Greeting>Hello, I'm</Greeting>
-            <HeroName>
-              THEMBELIHLE<br />
-              <span className="accent">Ncube</span>
-            </HeroName>
-            <Role>Full Stack Developer</Role>
-          </motion.div>
+        <Grid>
+          <Left variants={containerVariants} initial="hidden" animate="visible">
+            <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Greeting>Hello, I'm</Greeting>
+              <HeroName>
+                THEMBELIHLE<br />
+                <span className="accent">Ncube</span>
+              </HeroName>
+              <Role>Full Stack Developer</Role>
+            </motion.div>
 
-          
+            <Bio as={motion.p} variants={itemVariants}>
+              Software Developer passionate about creating fast, responsive, and accessible web applications. I combine clean code with thoughtful design to build digital experiences that solve real-world problems.
+            </Bio>
 
-          <Bio as={motion.p} variants={itemVariants}>
-            Software Developer passionate about creating fast, responsive, and accessible web applications. I combine clean code with thoughtful design to build digital experiences that solve real-world problems.
-          </Bio>
+            <BtnRow as={motion.div} variants={itemVariants}>
+              <PrimaryBtn onClick={() => setCvOpen(true)}>
+                Download CV <Download size={15} />
+              </PrimaryBtn>
+              <GhostBtn href="#about" onClick={(e) => go(e, '#about')}>
+                About Me <ArrowUpRight size={14} />
+              </GhostBtn>
+            </BtnRow>
+          </Left>
 
-          <BtnRow as={motion.div} variants={itemVariants}>
-            <PrimaryBtn href="#projects" onClick={(e) => go(e, '#projects')}>
-              View My Work <ArrowRight size={15} />
-            </PrimaryBtn>
-            <GhostBtn href="#about" onClick={(e) => go(e, '#about')}>
-              About Me <ArrowUpRight size={14} />
-            </GhostBtn>
-          </BtnRow>
-        </Left>
+          <Right
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <HeroImgBg />
+            <HeroImgFrame>
+              <HeroImg src={profileImg} alt="Thembelihle Ncube" />
+            </HeroImgFrame>
+          </Right>
+        </Grid>
+      </Section>
 
-        <Right
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <HeroImgBg />
-          <HeroImgFrame>
-            <HeroImg src={profileImg} alt="Thembelihle Ncube" />
-          </HeroImgFrame>
-        </Right>
-      </Grid>
-    </Section>
+      {/* CV Preview Modal */}
+      <AnimatePresence>
+        {cvOpen && (
+          <Backdrop
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setCvOpen(false)}
+          >
+            <ModalBox
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ModalHeader>
+                <ModalTitle>Thembelihle Ncube — CV</ModalTitle>
+                <CloseBtn onClick={() => setCvOpen(false)} aria-label="Close">
+                  <X size={18} />
+                </CloseBtn>
+              </ModalHeader>
+
+              <ModalBody>
+                <CVImage src={CV_IMAGE} alt="Thembelihle Ncube CV" />
+              </ModalBody>
+
+              <ModalFooter>
+                <DownloadBtn href={CV_IMAGE} download="Thembelihle_Ncube_CV.png">
+                  <Download size={15} /> Download CV
+                </DownloadBtn>
+              </ModalFooter>
+            </ModalBox>
+          </Backdrop>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
