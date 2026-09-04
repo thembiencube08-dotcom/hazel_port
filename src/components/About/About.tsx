@@ -142,7 +142,7 @@ export default function About() {
         
 
         <Bio>
-          Hi! I'm Thembelihle, a junior full-stack developer focused on building clean,
+          Hi! I'm Thembelihle, a full-stack developer focused on building clean,
           fast, and accessible web applications.
         </Bio>
         <Bio>

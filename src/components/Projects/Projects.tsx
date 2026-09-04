@@ -170,12 +170,12 @@ const ViewAllWrapper = styled.div`
 
 const projects = [
   {
-    title: 'Aqua Rho',
-    description: 'Aqua Rho is an on-demand digital marketplace designed to revolutionize bulk water supply and distribution. By bridging the gap between consumers, commercial buyers, water suppliers, and haulers, the platform streamlines the end-to-end process of ordering, dispatching, and delivering bulk water.',
-    tech: ['React', 'TypeScript', 'Node.js', 'Supabase'],
-    image: '/images/app.png',
-    demo: '#',
-    repo: '#',
+    title: 'Popees Ecommerce Baby Website',
+    description: 'Kidverse an e-commerce marketplace for kids products, connecting customers, suppliers, and delivery partners.',
+    tech: [  'Node.js', 'Supabase', 'Next.js'],
+    image: '/images/pope.png',
+    demo: 'https://kidversee-lbw5.vercel.app/',
+    repo: 'https://github.com/thembiencube08-dotcom/kidversee.git',
   },
   {
     title: 'Nedbank Website',
