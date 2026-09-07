@@ -171,7 +171,7 @@ const ViewAllWrapper = styled.div`
 const projects = [
   {
     title: 'Popees Ecommerce Baby Website',
-    description: 'Kidverse an e-commerce marketplace for kids products, connecting customers, suppliers, and delivery partners.',
+    description: "Popees is a responsive e-commerce site for baby and children's products, built with Next.js, React, TypeScript, and Styled Components. It features category-based navigation, product filtering and search, promotional sections, and a clean, mobile-friendly UI designed around reusable components for a smooth shopping experience.",
     tech: [  'Node.js', 'Supabase', 'Next.js'],
     image: '/images/pope.png',
     demo: 'https://kidversee-lbw5.vercel.app/',
@@ -186,12 +186,12 @@ const projects = [
     repo: 'https://github.com/thembiencube08-dotcom/Nedbank.git',
   },
   {
-    title: 'Furniro Website',
-    description: 'Furniro is a sleek, modern e-commerce platform crafted to deliver an intuitive and visually engaging shopping experience for high-end home decor and furniture. Designed with clean aesthetics and modern UX principles, the platform bridges functional online shopping with immersive room inspiration.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: '/images/project-furniro.png',
-    demo: 'https://custom-furniture-two.vercel.app/',
-    repo: 'https://github.com/thembiencube08-dotcom/custom-furniture.git',
+    title: 'Lobels Dashboard',
+    description: "A predictive churn analysis platform built for Lobels Bread Bulawayo, identifying account-based customers at risk of churning before they're lost. Combines RFM (Recency, Frequency, Monetary) analysis with a Random Forest machine learning model to score customer risk, surfaced through a color-coded dashboard with real-time risk tiers and account insights for account managers.",
+    tech: ['React', 'TypeScript', 'styled-components', 'Node.js', 'Express', 'Python', 'FastAPI', 'Supabase'],
+    image: '/images/nu.png',
+    demo: 'https://lobelsbi.vercel.app/',
+    repo: 'https://github.com/thembiencube08-dotcom/lobelsbi.git',
   },
   {
     title: 'Dwello',

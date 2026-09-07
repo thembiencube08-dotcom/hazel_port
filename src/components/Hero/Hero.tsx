@@ -300,6 +300,7 @@ const go = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
 };
 
 const CV_IMAGE = '/images/Thembelihle_Ncube-CV.png';
+const CV_PDF = '/Thembelihle_Ncube-CV.pdf';
 
 export default function Hero() {
   const [cvOpen, setCvOpen] = useState(false);
@@ -375,7 +376,7 @@ export default function Hero() {
               </ModalBody>
 
               <ModalFooter>
-                <DownloadBtn href={CV_IMAGE} download="Thembelihle_Ncube_CV.png">
+                <DownloadBtn href={CV_PDF} download="Thembelihle_Ncube-CV.pdf">
                   <Download size={15} /> Download CV
                 </DownloadBtn>
               </ModalFooter>
